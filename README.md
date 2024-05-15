@@ -22,7 +22,6 @@
 
 ### Handling Received Notifications:
 - ![image](https://github.com/AdonisZK/Flutter-Push-Notification/assets/48209612/13d9778c-4b29-45a2-a5e3-b4fcd69ae199)
-- ![image](https://github.com/AdonisZK/Flutter-Push-Notification/assets/48209612/09bb3ad6-697b-4f4a-a62a-b3cdf770efe9)
 - Implement a function to handle incoming notifications.
 - Use a Navigator key to navigate to a specific page when a notification is tapped.
 ```python
@@ -38,7 +37,6 @@
 ### Displaying Notification Content:
 - ![image](https://github.com/AdonisZK/Flutter-Push-Notification/assets/48209612/11268880-ba74-4404-8685-fe5b2afdde8a)
 - Retrieve the notification message, title, body, and data.
-- ![image](https://github.com/AdonisZK/Flutter-Push-Notification/assets/48209612/15014769-d135-405b-965d-e57b9e2e09ec)
 ```python
   Widget build(BuildContext context) {
     final message = ModalRoute.of(context)!.settings.arguments as RemoteMessage;
