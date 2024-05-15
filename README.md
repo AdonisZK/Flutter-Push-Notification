@@ -9,17 +9,44 @@
 ## Notification Setup
 
 ### Use Firebase Cloud Messaging to get a token for the device.
-Send this token to your server to target specific devices for notifications.
-Creating a Notification Campaign:
+- Send this token to your server to target specific devices for notifications.
+- ![image](https://github.com/AdonisZK/Flutter-Push-Notification/assets/48209612/b7a88ca1-655b-48ad-a0bc-2af9945704f6)
 
-Go to the Firebase console and create a new campaign for notifications.
-Craft your notification message and target your Android device.
-You can schedule notifications or send them right away.
-Handling Received Notifications:
+### Creating a Notification Campaign:
+- ![image](https://github.com/AdonisZK/Flutter-Push-Notification/assets/48209612/9f23165c-82d5-4582-a9ac-2e7f7c530d55)
+- ![image](https://github.com/AdonisZK/Flutter-Push-Notification/assets/48209612/1839fe34-2ddb-4d94-bdf1-1b05e9639f6f)
 
-Implement a function to handle incoming notifications.
-Use a Navigator key to navigate to a specific page when a notification is tapped.
-Displaying Notification Content:
+### Go to the Firebase console and create a new campaign for notifications.
+- Craft your notification message and target your device(s).
+- ![image](https://github.com/AdonisZK/Flutter-Push-Notification/assets/48209612/eb31a750-7004-4530-b4e1-6b7dbaf4777b)
 
-Retrieve the notification message, title, body, and data.
-Display this information on a dedicated notification page in your app.
+### Handling Received Notifications:
+- Implement a function to handle incoming notifications.
+- Use a Navigator key to navigate to a specific page when a notification is tapped.
+```python
+  void handleMessage(RemoteMessage? message) {
+    if (message == null) return;
+
+    navigatorKey.currentState?.pushNamed(
+      '/notification_screen',
+      arguments: message,
+    );
+  }
+```
+### Displaying Notification Content:
+- Retrieve the notification message, title, body, and data.
+```python
+  Widget build(BuildContext context) {
+    final message = ModalRoute.of(context)!.settings.arguments as RemoteMessage;
+
+    return Scaffold(
+      appBar: AppBar(title: Text("Notification")),
+      body: Column(
+        children: [
+          Text(message.notification!.title.toString()),
+          Text(message.notification!.body.toString()),
+          Text(message.data.toString()),
+        ],
+      ),
+    );
+```
